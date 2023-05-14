@@ -1,12 +1,16 @@
 import tkinter as tk
 import sqlite3
 import datetime
+<<<<<<< HEAD
 import os
+=======
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
 from PIL import Image, ImageTk
 from tkinter import messagebox
 
 # Create a connection to the SQLite database
 mydb = sqlite3.connect('mydatabase.db')
+<<<<<<< HEAD
 # Get the current working directory
 cwd = os.getcwd()
 
@@ -15,6 +19,9 @@ db_path = os.path.join(cwd, 'mydatabase.db')
 
 # Create a connection to the SQLite database
 mydb = sqlite3.connect(db_path)
+=======
+
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
 # Create a cursor to interact with the database
 mycursor = mydb.cursor()
 
@@ -23,17 +30,26 @@ mycursor.execute("CREATE TABLE IF NOT EXISTS customers (customer_id INTEGER PRIM
 mycursor.execute("CREATE TABLE IF NOT EXISTS carers (carer_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)")
 mycursor.execute("CREATE TABLE IF NOT EXISTS messages (message_id INTEGER PRIMARY KEY AUTOINCREMENT, c_id INTEGER, message TEXT, datetime TEXT, status TEXT DEFAULT 'pending', FOREIGN KEY(c_id) REFERENCES customers(customer_id))")
 
+<<<<<<< HEAD
 
 
+=======
+# Insert a new user into the customers table
+new_user = ('zizo', '123456')
+mycursor.execute("INSERT INTO customers (username, password) VALUES (?, ?)", new_user)
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
 mydb.commit()
 
 # Execute a SELECT statement
 username = 'zizo'
 password = '123456'
 mycursor.execute("SELECT * FROM customers WHERE username=? AND password=?", (username, password))
+<<<<<<< HEAD
 #username1= 'zizo'
 #password1 = '123456'
 #mycursor.execute("SELECT * FROM carers WHERE username=? AND password=?", (username1, password1))
+=======
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
 
 # Fetch the result of the SELECT statement
 result = mycursor.fetchone()
@@ -42,15 +58,31 @@ if result:
 else:
     print("No such user exists in the database.")
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
 # Create the GUI window
 root = tk.Tk()
 root.geometry('800x500')
 root.title('Home Page')
+<<<<<<< HEAD
 
 
     # Load the PNG image
 image = Image.open('C:/Users/User/Desktop/collaborative dev/z.png')
 image1 = Image.open('C:/Users/User/Desktop/collaborative dev/zz.png')
+=======
+        # Create the GUI windowa
+    
+
+
+    # Load the PNG image
+image = Image.open('C:/Users/User/Desktop/d/collaborative dev/z.png')
+image1 = Image.open('C:/Users/User/Desktop/d/collaborative dev/zz.png')
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
 photo = ImageTk.PhotoImage(image)
 photo1 = ImageTk.PhotoImage(image1)
 
@@ -76,7 +108,11 @@ def logout(user_type):
     if user_type == 'customer':
         customer_login()
     elif user_type == 'carer':
+<<<<<<< HEAD
         carer_login() 
+=======
+        carer_login()
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
     
 
 
@@ -88,7 +124,11 @@ def customer_login():
     # Create the customer login page
     customer_window = tk.Toplevel(root)
     #customer_window.geometry('500x500')
+<<<<<<< HEAD
     customer_window.geometry('1300x1000')
+=======
+    customer_window.geometry('500x500+500+200')
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
     customer_window.title('Customer Login')
 
      # Create the Label widget with the background image
@@ -141,6 +181,7 @@ def go_back():
 def customer_home(customer_id):
     # Create the customer home window
     customer_home_window = tk.Toplevel(root)
+<<<<<<< HEAD
 
     customer_home_window.title("Customer Home")
 
@@ -148,6 +189,10 @@ def customer_home(customer_id):
     w, h = customer_home_window.winfo_screenwidth(), customer_home_window.winfo_screenheight()
     customer_home_window.geometry("%dx%d+0+0" % (w, h))
 
+=======
+    customer_home_window.title("Customer Home")
+
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
     # Create the Label widget with the background image
     background_label = tk.Label(customer_home_window, image=photo1)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -182,15 +227,22 @@ def customer_home(customer_id):
         ok_button = tk.Button(confirmation_window, text="OK", command=confirmation_window.destroy)
         ok_button.pack()
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
         # Empty the message box
         message_entry.delete(0, tk.END)
 
     send_button = tk.Button(customer_home_window, text="Send", command=lambda: send_message(customer_id))
+<<<<<<< HEAD
     send_button.place(relx=0.5, rely=0.6, anchor="center")
 
   
    
+=======
+    send_button.place(relx=0.5, rely=0.6, anchor="center")    
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
 
     def logout_customer():
         # Destroy the current window
@@ -210,7 +262,11 @@ def customer_home(customer_id):
 def carer_login():
     # Create the carer login page
     carer_window = tk.Toplevel(root)
+<<<<<<< HEAD
     carer_window.geometry('1300x1000')
+=======
+    carer_window.geometry('500x500')
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
     carer_window.title('Carer Login')
 
      # Create the Label widget with the background image
@@ -245,9 +301,12 @@ def carer_home(carer_id):
     # Create the carer home window
     carer_home_window = tk.Toplevel(root)
     carer_home_window.title("Carer Home")
+<<<<<<< HEAD
     # Set the window size to fill the screen
     w, h = carer_home_window.winfo_screenwidth(), carer_home_window.winfo_screenheight()
     carer_home_window.geometry("%dx%d+0+0" % (w, h))
+=======
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
     # Create the Label widget with the background image
     background_label = tk.Label(carer_home_window, image=photo)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -287,6 +346,7 @@ def carer_home(carer_id):
 
     
     # Create the accept and reject buttons
+<<<<<<< HEAD
         def accept_message():
             # Get the selected message from the listbox
             selected_index = message_listbox.curselection()
@@ -338,6 +398,36 @@ def carer_home(carer_id):
 
             return
 
+=======
+    def accept_message():
+        # Get the selected message from the listbox
+        selected_index = message_listbox.curselection()
+        if len(selected_index) == 0:
+            tk.messagebox.showerror("Error", "Please select a message.")
+            return
+        selected_message = message_listbox.get(selected_index[0])
+
+        # Update the status of the message in the database
+        sql = "UPDATE messages SET status = ? WHERE message = ?"
+        val = ("accepted", selected_message)
+        mycursor.execute(sql, val)
+        mydb.commit()
+
+        # Remove the message from the listbox
+        message_listbox.delete(selected_index)
+
+        # Show a message box
+        tk.messagebox.showinfo("Message Accepted", "You have accepted the message.")
+        # Redirect to the same pag
+        carer_home(carer_id)
+
+    def reject_message():
+        # Get the selected message from the listbox
+        selected_index = message_listbox.curselection()
+        if len(selected_index) == 0:
+            tk.messagebox.showerror("Error", "Please select a message.")
+            return
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
         selected_message = message_listbox.get(selected_index[0])
 
         # Update the status of the message in the database
@@ -349,6 +439,7 @@ def carer_home(carer_id):
         # Remove the message from the listbox
         message_listbox.delete(selected_index)
 
+<<<<<<< HEAD
         # Hide the main window and show a message box
         root.withdraw()
         message_box = tk.messagebox.showinfo("Message Rejected", "You have rejected the message.")
@@ -369,6 +460,13 @@ def carer_home(carer_id):
     logout_button = tk.Button(carer_home_window, text="Logout", command=logout_carer)
     logout_button.pack()    
 
+=======
+        # Show a message box
+        tk.messagebox.showinfo("Message Rejected", "You have rejected the message.")
+        # Redirect to the same page
+        carer_home(carer_id)
+
+>>>>>>> a483c69d910f80877921d2957564fc424e266740
     accept_button = tk.Button(carer_home_window, text="Accept", command=accept_message)
     accept_button.place(relx=0.35, rely=0.8, anchor='center')
     reject_button = tk.Button(carer_home_window, text="Reject", command=reject_message)
